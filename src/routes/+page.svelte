@@ -41,6 +41,10 @@
 		height: 400px;
 	}
 
+	#bnc-icon {
+		font-size: xxx-large;
+	}
+
 	#svelte-icon {
 		position: relative;
 		top: 8px;
@@ -56,6 +60,13 @@
 		position: absolute;
 		bottom: 0px;
 		background-color: #333;
+		font-family: "Tahoma";
+	}
+
+	@media screen and (max-width: 600) {
+		#main {
+			scale: 10%;
+		}
 	}
 </style>
 
@@ -78,7 +89,7 @@
 	<!-- footer -->
 	<footer>
 		<span>
-			&copy; {d} - arb1z websites 
+			&copy; {d} - arb1z websites' 
 			<img id="svelte-icon" src="svelte-logo.svg">
 		</span>
 	</footer>
