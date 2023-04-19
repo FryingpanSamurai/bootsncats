@@ -1,4 +1,5 @@
 <script>
+	import {onMount} from 'svelte';
 	// need a year
 	let d = new Date().getFullYear();
 </script>
@@ -7,6 +8,26 @@
 	:global(*) {
 		padding: 0;
 		margin: 0;
+	}
+
+	@keyframes headbobleft {
+		from {
+			top: 27%;
+			left: 50%;
+		}
+		to {
+			top: 29%;
+			left: 48%;
+		}
+	}
+
+	@keyframes bootsbob {
+		from {
+			transform: scaleX(1);
+		}
+		to {
+			transform: scaleX(-1);
+		}
 	}
 
 	#main{
@@ -20,25 +41,35 @@
 	}
 
 	#bootsandcats {
+		width: 100%;
 		display: flex;
-		gap: 30px;
+		justify-content: space-evenly;
+		padding-bottom: 100px;
+	}
+
+	#cat {
+		height: 200px;
+		object-fit: contain;
 	}
 
 	#cathead {
-		position: relative;
-		height: 200px;
-		top: -280px;
-		left: 200px;
+		position: absolute;
+		height: 75px;
 		width: auto;
+		animation: headbobleft 0.25s infinite;
+		animation-direction: alternate;
 	}
 
 	#catbody {
-		height: 400px;
+		height: 200px;
 		width: auto;
 	}
 
 	#boots {
-		height: 400px;
+		height: 200px;
+		object-fit: contain;
+		animation: bootsbob 0.5s infinite linear;
+		animation-direction: alternate;
 	}
 
 	#bnc-icon {
@@ -63,9 +94,25 @@
 		font-family: "Tahoma";
 	}
 
-	@media screen and (max-width: 600) {
-		#main {
-			scale: 10%;
+	@media only screen and (min-width: 768px) {
+		/* design for desktop */
+		#cathead {
+			height: 150px;
+		}
+
+		#catbody {
+			height:400px;
+		}
+
+		@keyframes headbobleft {
+			from {
+				top: 27%;
+				left: 57%;
+			}
+			to {
+				top: 28%;
+				left: 55%;
+			}
 		}
 	}
 </style>
@@ -74,10 +121,13 @@
 <div id="main">
 	<!-- boots and cat here -->
 	<div id="bootsandcats">
-		<img id="boots" src="rubberboots.svg">
+		<img alt="boots" id="boots" src="rubberboots.svg">
 		<div id="cat">
-			<img id="cathead" src="catface-color.svg">
-			<img id="catbody" src="catsil.svg">
+			<img
+				alt="cat head"
+				id="cathead" 
+				src="catface-color.svg">
+			<img alt="cat body" id="catbody" src="catsil.svg">
 		</div>
 	</div>
 	<!-- boot icon and cat icon font-awesome -->
@@ -90,7 +140,7 @@
 	<footer>
 		<span>
 			&copy; {d} - arb1z websites' 
-			<img id="svelte-icon" src="svelte-logo.svg">
+			<img alt="svelte icon" id="svelte-icon" src="svelte-logo.svg">
 		</span>
 	</footer>
 </div>
